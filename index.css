@@ -1,0 +1,4 @@
+.requiredSymbol::after {
+    content: "*";
+    color: red;
+  }

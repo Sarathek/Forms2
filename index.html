@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre Owned Cars</title>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+ </head>
+
+   <body>
+     <h1>Pre Owned Car Enquiry Form</h1>
+     <h2>Personal Details :</h2>
+
+     <form name="myForm">
+
+        <label class="requiredSymbol" for="firstName">First Name :</label>
+        <input type="text" name="firstName" placeholder="eg: Sarath" required><br><br>
+        
+
+        <label for="lastName">Last Name :</label>
+        <input type="text" id="lname" name="lastName" placeholder="eg: E K"><br><br>
+
+        <label class="requiredSymbol" for="mobileNumber">Moblie Number :</label>
+        <input type="tel" id="mNum" name="mobileNumber" placeholder="Enter your mobile number" required pattern="[0-9]{10}">
+        <br> <small> Format: 10 digits, Eg : 9539373645</small> <br><br>
+
+
+
+        <label class="requiredSymbol" for="gender">Gender :</label><br>
+
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+
+        <input type="radio" id="others" name="gender" value="others" required>
+        <label for="others">Others</label><br><br><br>
+
+        <h2>Car Details :</h2>
+
+        <label for="carBrand">Car Brand :</label>
+        <select id="carBrand" name="carBrand">
+            <option value="brand" required>--Select Any Brand--</option>
+            <option value="audi">Audi</option>
+            <option value="mercedes">Mercedes-Benz</option>
+            <option value="bmw">BMW</option>
+            <option value="lexus">Lexus</option>
+            <option value="toyota">Toyota</option>
+            <option value="honda">Honda</option>
+            <option value="ford">Ford</option>
+            <option value="maruti">Maruti Suzuki</option>
+            <option value="volkswagen">Volkswagen</option>
+            <option value="mahindra">Mahindra</option>
+            <option value="skoda">Skoda</option>
+            <option value="kia">Kia</option>
+            <option value="others">Others</option>
+        </select>
+        <br><br>
+    
+
+        <label for="carType">Car Type :</label>
+         <select id="carType" name="carType">
+
+            <option value="type">--Select Any Type--</option>
+            <option value="suv">Premium</option>
+            <option value="suv">SUV</option>
+            <option value="sedan">Sedan</option>
+            <option value="hatchback">Hatchback</option> 
+         </select> <br><br>
+
+         <label for="priceRange">Price Range :</label>
+         <select id="priceRange" name="priceRange">
+
+            <option value="price">--Select Price Range--</option>
+            <option value="0-5">0 to 5 lakhs</option>
+            <option value="5-10">5 to 10 lakhs</option>
+            <option value="10-15">10 to 15 lakhs</option>
+            <option value="15-20">15 to 20 lakhs</option>
+            <option value="20 and above">20 lakhs and above</option>
+         </select>
+         <br><br>
+
+         <label for="manufacturingYear">Manufacturing Year :</label>
+         <select id="manufacturingYear" name="manufacturingYear">
+
+            <option value="type">--Select Any Year</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="below2018">2018 and Below</option>
+             
+         </select><br><br>
+
+         <label for="fuel">Fuel Type :</label>
+         <select id="fuel" name="fuel">
+
+            <option value="fuel">--Select Fuel Type--</option>
+            <option value="petrol">Petrol</option>
+            <option value="diesel">Diesel</option>
+            <option value="lpg">LPG</option>
+            <option value="cngHybrid">CNG & Hybrid</option> 
+            <option value="electric">Electric</option>
+         </select> <br><br>
+
+         <label for="transmission">Transmission :</label>
+         <select id="transmission" name="transmission">
+
+            <option value="transmission">--Select Transmission--</option>
+            <option value="manual">Manual</option>
+            <option value="automatic">Automatic</option>
+         </select> <br><br>
+
+         <label for="kmDriven">KM Driven :</label>
+         <select id="kmDriven" name="kmDriven">
+
+            <option value="kmRange">--Select Any KM Range--</option>
+            <option value="0-25000">Below 25000 km</option>
+            <option value="25000-50000">25000 km to 50000 km</option>
+            <option value="50000-75000">50000 km to 75000 km</option> 
+            <option value="75000-100000">75000 km to 100000 km</option>
+            <option value="above100000">Above 100000 km</option>
+         </select> <br><br><br>
+
+        <input type="checkbox" id="T&C" name="T&C" value="T&C" required>
+        <label class="requiredSymbol" for="T&C"> I Accept the terms & Conditions</label><br>
+        <small>The provision of personal information to our website will remain voluntary. Such<br>
+         information will not be disclosed to third parties without your express consent.</small><br><br>
+
+        <input type="submit" id="submit" value="Submit">
+        <button type="button" id="retrieveButton">Retrieve Data</button>
+        <div id="retrievedData"></div>
+        
+      </form>
+
+      <script>
+         let userID;
+
+const form = document.myForm;
+
+let value = document.getElementById("retrievedData");
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.querySelector("form")
+
+});
+
+
+
+form.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+
+
+    let formData = new FormData(this);
+
+    let formDataObject = {};
+
+    formData.forEach((value, key) => {
+
+        formDataObject[key] = value;
+
+    });
+
+    let json = JSON.stringify(formDataObject)
+
+    fetch("http://localhost:3000/submit", {
+
+        method: "POST",
+
+        body: json,
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        }
+
+    })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            console.log("Response Data:", data);
+
+            userID = data.id
+
+        })
+
+        .catch(error => {
+
+            console.error("Error:", error);
+
+        });
+
+});
+
+viewButton = document.getElementById("retrieveButton")
+
+viewButton.addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    fetch(`http://localhost:3000/data?id=${userID}`)
+
+        .then(response => response.json())
+
+        .then(data => {
+
+
+
+            value.textContent = JSON.stringify(data, null, 2);
+
+        })
+
+        .catch(error => {
+
+            console.error("Error:", error);
+
+        });
+
+});
+     </script>
+
+     
+   
+   </body>
+ 
+</html>
+
